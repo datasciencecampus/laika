@@ -1,2 +1,3 @@
 # laika
-satellite pipeline project
+
+A pipeline project that uses satellite data to detect objects.
