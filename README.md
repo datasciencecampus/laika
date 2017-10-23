@@ -10,4 +10,9 @@ The first project phase will implement an existing image segmentation algorithm 
 
 ### Future Phases
 
-Future phases will aim to enhance components of the pipeline to allow for different types of images (satellite/photos), different computer vision problems (classification / detection / segmentation) different algorithm architectures and appropriate output modules.  
+Future phases will aim to enhance components of the pipeline to allow for different types of images (satellite/photos), different computer vision problems (classification / detection / segmentation) different algorithm architectures and appropriate output modules.
+
+## Formal project info
+
+* [Success criteria](success_criteria.md)
+* [Project brief](project.md)
