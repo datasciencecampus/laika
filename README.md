@@ -16,3 +16,7 @@ Future phases will aim to enhance components of the pipeline to allow for differ
 
 * [Success criteria](success_criteria.md)
 * [Project brief](project.md)
+
+## Additonal reading
+
+* [References](references.md)
