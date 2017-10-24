@@ -2,6 +2,11 @@
 
 ## Papers
 
+
+### 2017
+
+* [Urban environments from satellite imagery](https://github.com/adrianalbert/urban-environments) - Comparing urban environments using satellite imagery and convolutional neural
+
 ### 2016
 
 * [Classification and Segmentation of Satellite Orthoimagery Using Convolutional Neural Networks](https://ai2-s2-pdfs.s3.amazonaws.com/6269/c25f3cebe4dba83bd7feb78735796ffcdf6d.pdf)
@@ -35,13 +40,14 @@
 ### DSTL - Kaggle
 
 1. [U-Net](http://blog.kaggle.com/2017/04/26/dstl-satellite-imagery-competition-1st-place-winners-interview-kyle-lee/)
-2. - 
+2. -
 3. [Another U-Net](http://blog.kaggle.com/2017/05/09/dstl-satellite-imagery-competition-3rd-place-winners-interview-vladimir-sergey/)
 4. [modified U-Net](https://blog.deepsense.ai/deep-learning-for-satellite-imagery-via-image-segmentation/)
+5. [pixel-wise logistic regression model](https://www.kaggle.com/lopuhin/full-pipeline-demo-poly-pixels-ml-poly)
 
 ### Understaning Amazon from space - Kaggle
 
-1. [11 convolutional neural networks](http://blog.kaggle.com/2017/10/17/planet-understanding-the-amazon-from-space-1st-place-winners-interview/) - This is prettu nice, details winners' end-to-end architecture. 
+1. [11 convolutional neural networks](http://blog.kaggle.com/2017/10/17/planet-understanding-the-amazon-from-space-1st-place-winners-interview/) - This is prettu nice, details winners' end-to-end architecture.
 
 
 ## Datasets
@@ -55,7 +61,7 @@
 ### Pre-labeled
 
 * [DSTL - Kaggle](https://www.kaggle.com/c/dstl-satellite-imagery-feature-detection)
-* [Draper Satellite Image Chronology - Kaggle](https://www.kaggle.com/c/draper-satellite-image-chronology) 
+* [Draper Satellite Image Chronology - Kaggle](https://www.kaggle.com/c/draper-satellite-image-chronology)
 * [Understanding the Amazon from Space - Kaggle](https://www.kaggle.com/c/planet-understanding-the-amazon-from-space)
 * [Ships in Satellite Imagery - Kaggle](https://www.kaggle.com/rhammell/ships-in-satellite-imagery) - From [Open California](https://www.planet.com/products/open-california/) dataset.
 * [2D Semantic Labeling - Vaihingen data](http://www2.isprs.org/commissions/comm3/wg4/2d-sem-label-vaihingen.html)

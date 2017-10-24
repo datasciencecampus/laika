@@ -20,7 +20,7 @@ A crucial component in the successful application of the proposed pipeline will 
 
 2. Implement an existing satellite segmentation algorithm
 
-As a proof of concept, an existing methodology will be implemented. This will allow us to assess the hardware we have available in the campus and also allow us to better understand the required components of a generalised pipeline which will be developed in future phases of the project.
+As a proof of concept, an existing methodology will be implemented. This will allow us to assess the hardware we have available in the campus and also allow us to better understand the required components of a generalised pipeline which will be developed in future phases of the project. This first phase should take some satellite data, perform a segmentation and return classifications. 
 
 3. Document and communicate the segmentation algorithm
 
