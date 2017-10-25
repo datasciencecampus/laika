@@ -9,9 +9,13 @@
 
 ### 2016
 
-* [Classification and Segmentation of Satellite Orthoimagery Using Convolutional Neural Networks](https://ai2-s2-pdfs.s3.amazonaws.com/6269/c25f3cebe4dba83bd7feb78735796ffcdf6d.pdf)
-* [Semantic Segmentation of Small Objects and Modeling of Uncertainty in Urban Remote Sensing Images Using Deep Convolutional Neural Networks](https://www.cv-foundation.org/openaccess/content_cvpr_2016_workshops/w19/papers/Kampffmeyer_Semantic_Segmentation_of_CVPR_2016_paper.pdf)
-* [First Experience with Sentinel-2 Data for Crop and Tree Species Classifications in Central Europe](http://www.mdpi.com/2072-4292/8/3/166/htm)
+* [Classification and Segmentation of Satellite Orthoimagery Using Convolutional Neural Networks](https://ai2-s2-pdfs.s3.amazonaws.com/6269/c25f3cebe4dba83bd7feb78735796ffcdf6d.pdf) - Per pixel classification of vegetation, ground, roads, buildings and water. Per pixel is done in a sliding window: the pixel to be classified is the centre pixel of the window. The window has a number of dimensions (typically r, g, b) correspsonding to the wavelengths available from the satellite. Eg., may have an extra channel for near infrared. Standard CNN used: stacked conv-layers, fc layer and finally a softmax classifiier. ReLUs have been used in conv-layer. The fc layer used here is actually a 1000 hidden unit denoising auto-encoder. Has a post processing step: pixel-by-pixel classifications are likely to involve noise - e.g., a single pixel classified as an industrial area in the middle of a field/ "salt and pepper misclassifications" SLIC and other averaging has been used here. Interestingly, paper mentions using DBSCAN - a form of density clustering to solve this.  
+
+**idea - Can Floyd–Steinberg or similar dithering algorithm be used in the convolution process?????**
+
+* [Semantic Segmentation of Small Objects and Modeling of Uncertainty in Urban Remote Sensing Images Using Deep Convolutional Neural Networks](https://www.cv-foundation.org/openaccess/content_cvpr_2016_workshops/w19/papers/Kampffmeyer_Semantic_Segmentation_of_CVPR_2016_paper.pdf) - Uses 9cm ultra high res. data from ISPRS. They use the common F1 score to eval results.
+
+* [First Experience with Sentinel-2 Data for Crop and Tree Species Classifications in Central Europe](http://www.mdpi.com/2072-4292/8/3/166/htm) - Random Forests. 
 * [A Direct and Fast Methodology for Ship Recognition in Sentinel-2 Multispectral Imagery](http://www.mdpi.com/2072-4292/8/12/1033/htm)
 * [Suitability of Sentinel-2 Data for Tree Species Classification in Central Europe](https://www.researchgate.net/profile/Markus_Immitzer/publication/303374163_Suitability_of_Sentinel-2_Data_for_Tree_Species_Classification_in_Central_Europe/links/573f0bbd08aea45ee844f238/Suitability-of-Sentinel-2-Data-for-Tree-Species-Classification-in-Central-Europe.pdf)
 
@@ -54,6 +58,12 @@
 
 ### Raw data
 
+Sentinel 2 data looking the most promising. (10m resolution for R,G,B + NIF) 
+(20m for shorter wavelengths). - see [MultiSpectral Instrument (MSI) Overview](https://earth.esa.int/web/sentinel/technical-guides/sentinel-2-msi/msi-instrument) for instrument details.
+
+**idea -- downscale higher resolution pre-labelled data to 10m per pixel if can not find pre-labelled 10m dataset**
+
+
 * [Copernicus Open Access Hub](https://scihub.copernicus.eu/) - The Copernicus Open Access Hub (previously known as Sentinels Scientific Data Hub) provides complete, free and open access to [Sentinel-1](https://sentinel.esa.int/web/sentinel/missions/sentinel-1), [Sentinel-2](https://sentinel.esa.int/web/sentinel/missions/sentinel-2) and [Sentinel-3](https://sentinel.esa.int/web/sentinel/missions/sentinel-3).
 * [Satellite Applications Catapult - Data discovery hub](http://data.satapps.org/) - Very nice. Lists pretty much everything.
 * [Satellite Applications Catapult - Sentinel Data Access Service (SEDAS)](https://sa.catapult.org.uk/facilities/sedas/]) - (API) portal enabling end-users to search and download data from Sentinel 1 & 2 satellites. It aims to lower barriers to entry and create the foundations for an integrated approach to satellite data access.
@@ -64,4 +74,4 @@
 * [Draper Satellite Image Chronology - Kaggle](https://www.kaggle.com/c/draper-satellite-image-chronology)
 * [Understanding the Amazon from Space - Kaggle](https://www.kaggle.com/c/planet-understanding-the-amazon-from-space)
 * [Ships in Satellite Imagery - Kaggle](https://www.kaggle.com/rhammell/ships-in-satellite-imagery) - From [Open California](https://www.planet.com/products/open-california/) dataset.
-* [2D Semantic Labeling - Vaihingen data](http://www2.isprs.org/commissions/comm3/wg4/2d-sem-label-vaihingen.html)
+* [2D Semantic Labeling - Vaihingen data](http://www2.isprs.org/commissions/comm3/wg4/2d-sem-label-vaihingen.html) - This is from a true orthophotographic survey (from a plane). The data is 9cm resolution!
