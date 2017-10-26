@@ -24,6 +24,7 @@
 * [Marker-Controlled Watershed-Based Segmentation of Multiresolution Remote Sensing Images](https://s3.amazonaws.com/academia.edu.documents/45383993/Marker-Controlled_Watershed-Based_Segmen20160505-26355-1xvg3iz.pdf)
 * [Stable Mean-Shift Algorithm and Its Application to the Segmentation of Arbitrarily Large Remote Sensing Images](http://faculty.wwu.edu/wallin/envr442/pdf_files/Michel_etal_2015_Stable_mean_shift_algorithm_app_to_segmentation_large_remote_sensing_images_IEEE_Trans_Geosci_RS.pdf)
 * [Satellite Image Segmentation based on YCbCr Color Space](http://www.indjst.org/index.php/indjst/article/viewFile/51281/46256)
+* [Unsupervised Deep Feature Extraction for Remote Sensing Image Classification](https://arxiv.org/pdf/1511.08131.pdf)
 
 ### 2014
 
@@ -75,3 +76,7 @@ Sentinel 2 data looking the most promising. (10m resolution for R,G,B + NIF)
 * [Understanding the Amazon from Space - Kaggle](https://www.kaggle.com/c/planet-understanding-the-amazon-from-space)
 * [Ships in Satellite Imagery - Kaggle](https://www.kaggle.com/rhammell/ships-in-satellite-imagery) - From [Open California](https://www.planet.com/products/open-california/) dataset.
 * [2D Semantic Labeling - Vaihingen data](http://www2.isprs.org/commissions/comm3/wg4/2d-sem-label-vaihingen.html) - This is from a true orthophotographic survey (from a plane). The data is 9cm resolution!
+
+## Other
+
+* [Satellite imagery - what can hospital carparks tell us about disease outbreak?](http://online.qmags.com/CMG0414/Default.aspx?pg=97&mode=2&imm_mid=0bb43a&cmp=em-strata-na-na-newsltr_20140423_elist#pg97&mode2)
