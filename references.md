@@ -5,7 +5,7 @@
 
 ### 2017
 
-* [Urban environments from satellite imagery](https://github.com/adrianalbert/urban-environments) - Comparing urban environments using satellite imagery and convolutional neural nets. This is a very nice paper - lots of references to datasets. The focus is on open data. They use google maps api. 
+* [Urban environments from satellite imagery - Github](https://github.com/adrianalbert/urban-environments) - Comparing urban environments using satellite imagery and convolutional neural nets. This is a very nice paper - lots of references to datasets. The focus is on open data. They use google maps api + [Urban Atlas](https://www.eea.europa.eu/data-and-maps/data/urban-atlas) for ground truth. Note: Urban Atlas last updated in 2010.
 * [Deep Learning Based Large-Scale Automatic Satellite Crosswalk Classification](https://arxiv.org/pdf/1706.09302.pdf) - Zebra crossing identification using Google sat image data + Open street map zebra crossing locations. Associated code [here](https://github.com/rodrigoberriel/satellite-crosswalk-classification).
 
 ### 2016
@@ -46,11 +46,14 @@
 * [Github - Raster Vision](https://github.com/azavea/raster-vision) - Deep learning for aerial/satellite imagery. [ResNet50](https://arxiv.org/abs/1512.03385), [Inception v3](https://arxiv.org/abs/1512.00567), [DenseNet121](https://arxiv.org/abs/1608.06993), [DenseNet169](https://arxiv.org/abs/1608.06993) models. Uses [Keras](https://keras.io/) and [Tensorflow](https://www.tensorflow.org/).
 * [Github - Deep Learning Tutorial for Kaggle Ultrasound Nerve Segmentation competition, using Keras](https://github.com/jocicmarko/ultrasound-nerve-segmentation) - This monster was used in 1tst place solution to DSTL Kaggle satellite challenge.
 * [Predicting Poverty and Developmental Statistics from Satellite Images using Multi-task Deep Learning - Github](https://github.com/agarwalt/satimage) - Keras, Google sat. images, India cencus data.
+* [Using convolutional neural networks to pre-classify images for the humanitarian openstreetmap team (HOT & mapgive)](https://github.com/larsroemheld/OSM-HOT-ConvNet) - Donated MapGive data + Openstreetmap.
+* [OSMDeepOD - OSM and Deep Learning based Object Detection from Aerial Imagery](https://github.com/geometalab/OSMDeepOD) - Object detection from aerial imagery using open data from OpenStreetMap. - Not sure where images come from.
+* [ssai-cnn - Semantic Segmentation for Aerial / Satellite Images with Convolutional Neural Networks](https://github.com/mitmul/ssai-cnn) - uses [Massachusetts road & building dataset](https://www.cs.toronto.edu/~vmnih/data/). Implementation of CNN, based on methods in this [paper](http://www.ingentaconnect.com/content/ist/jist/2016/00000060/00000001/art00003)
 
 ### DSTL - Kaggle
 
 1. [U-Net](http://blog.kaggle.com/2017/04/26/dstl-satellite-imagery-competition-1st-place-winners-interview-kyle-lee/)
-2. -
+2. not known 
 3. [Another U-Net](http://blog.kaggle.com/2017/05/09/dstl-satellite-imagery-competition-3rd-place-winners-interview-vladimir-sergey/)
 4. [modified U-Net](https://blog.deepsense.ai/deep-learning-for-satellite-imagery-via-image-segmentation/)
 5. [pixel-wise logistic regression model](https://www.kaggle.com/lopuhin/full-pipeline-demo-poly-pixels-ml-poly)
@@ -75,7 +78,7 @@ Sentinel 2 data looking the most promising. (10m resolution for R,G,B + NIF)
 * [Satellite Applications Catapult - Sentinel Data Access Service (SEDAS)](https://sa.catapult.org.uk/facilities/sedas/]) - (API) portal enabling end-users to search and download data from Sentinel 1 & 2 satellites. It aims to lower barriers to entry and create the foundations for an integrated approach to satellite data access.
 * [Google](https://developers.google.com/maps/documentation/static-maps/) - 25k per day... :) - would also be easy to build testing tool from this..  
 
-### Pre-labeled
+### Pre-labelled
 
 * [DSTL - Kaggle](https://www.kaggle.com/c/dstl-satellite-imagery-feature-detection)
 * [Draper Satellite Image Chronology - Kaggle](https://www.kaggle.com/c/draper-satellite-image-chronology)
@@ -83,14 +86,20 @@ Sentinel 2 data looking the most promising. (10m resolution for R,G,B + NIF)
 * [Ships in Satellite Imagery - Kaggle](https://www.kaggle.com/rhammell/ships-in-satellite-imagery) - From [Open California](https://www.planet.com/products/open-california/) dataset.
 * [2D Semantic Labeling - Vaihingen data](http://www2.isprs.org/commissions/comm3/wg4/2d-sem-label-vaihingen.html) - This is from a true orthophotographic survey (from a plane). The data is 9cm resolution!
 * [SAT-4 and SAT-6 airborne datasets](http://csc.lsu.edu/~saikat/deepsat/) - very high res (1m) whole of US. 65 Terabytes. (DeepSat) 1m/px. (2015). SAT-4: barren land, trees, grassland, other. SAT-6: barren land, trees, grassland, roads, buildings, water bodies. (RGB + NIR) 
-* [UC Merced Land Use Dataset](http://vision.ucmerced.edu/datasets/landuse.html) - 2100 256 × 256, 1m/px aerial RGB images over 21 land use classes. (2010)
-* [Open street map landuse](http://osmlanduse.org/#11/-3.23866/51.57133/0/) - Visualised in this tool. Some studies have used this in combo. with google sat. images.
+
+
+#### Land-use
+
+* [Skynet - Data pipeline for machine learning with OpenStreetMap - Github](https://github.com/developmentseed/skynet-data) - Uses OSM QA tiles.
+* [UC Merced Land Use Dataset](http://vision.ucmerced.edu/datasets/landuse.html) - 2100 256 × 256, 1m/px aerial RGB images over 21 land use classes. US specific. (2010)
+* [Open street map landuse](http://osmlanduse.org/#11/-3.23866/51.57133/0/) - OSM landuse visualised in this tool. Some studies have used this in combo. with google sat. images.
 
 ## Other
 
 * [Terrapattern](http://www.terrapattern.com/about) - alpha version of Terrapattern: "similar-image search" for satellite photos. They use a ResNet. This is truely awesome.
 * [European Environment Agency - Urban Atlas](https://www.eea.europa.eu/data-and-maps/data/urban-atlas) - Land cover data for Large Urban Zones with more than 100.000 inhabitants.
 * [Satellite imagery - what can hospital carparks tell us about disease outbreak?](http://online.qmags.com/CMG0414/Default.aspx?pg=97&mode=2&imm_mid=0bb43a&cmp=em-strata-na-na-newsltr_20140423_elist#pg97&mode2)
+* [TEP Urban platform - Thematic Apps](https://urban-tep.eo.esa.int/#!thematic) - Lots of things. [Urban density](https://urban-tep.eo.esa.int/geobrowser/?id=guf#!&context=GUFDensity%2FGUF-DenS2012) / GUF. Derived from sat data.
 
 ## Tools/utilities
 
@@ -105,3 +114,7 @@ Sentinel 2 data looking the most promising. (10m resolution for R,G,B + NIF)
 
 * [Github satellite-imagery view](https://github.com/topics/satellite-imagery) - Good starting point.
 * [Awesome Sentinel - Github](https://github.com/Fernerkundung/awesome-sentinel) - Sat data tools/utils/visualisations etc.
+
+## Projects using Sentinel data
+
+* [sen2agri](http://www.esa-sen2agri.org/) - Preparing Sentinel-2 exploitation for agriculture monitoring. 2017 paper/demo: [Production of a national crop type map over the Czech Republic using Sentinel-1/2 images](http://www.esa-sen2agri.org/wp-content/uploads/docs/CzechAgri%20Final%20Report%201.2.pdf)
