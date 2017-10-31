@@ -6,6 +6,7 @@
 ### 2017
 
 * [Urban environments from satellite imagery](https://github.com/adrianalbert/urban-environments) - Comparing urban environments using satellite imagery and convolutional neural nets. This is a very nice paper - lots of references to datasets. The focus is on open data. They use google maps api. 
+* [Deep Learning Based Large-Scale Automatic Satellite Crosswalk Classification](https://arxiv.org/pdf/1706.09302.pdf) - Zebra crossing identification using Google sat image data + Open street map zebra crossing locations. Associated code [here](https://github.com/rodrigoberriel/satellite-crosswalk-classification).
 
 ### 2016
 
@@ -19,6 +20,7 @@
 * [A Direct and Fast Methodology for Ship Recognition in Sentinel-2 Multispectral Imagery](http://www.mdpi.com/2072-4292/8/12/1033/htm)
 * [Suitability of Sentinel-2 Data for Tree Species Classification in Central Europe](https://www.researchgate.net/profile/Markus_Immitzer/publication/303374163_Suitability_of_Sentinel-2_Data_for_Tree_Species_Classification_in_Central_Europe/links/573f0bbd08aea45ee844f238/Suitability-of-Sentinel-2-Data-for-Tree-Species-Classification-in-Central-Europe.pdf)
 * [Benchmarking Deep Learning Frameworks for the Classification of Very High Resolution Satellite Multispectral Data](https://www.isprs-ann-photogramm-remote-sens-spatial-inf-sci.net/III-7/83/2016/isprs-annals-III-7-83-2016.pdf) - uses the [SAT-4 and SAT-6 airborne datasets](http://csc.lsu.edu/~saikat/deepsat/). 
+* [Forecasting Vegetation Health at High Spatial Resolution - Github](https://github.com/JohnNay/forecastVeg) - Tool to produce short-term forecasts of vegetation health at high spatial resolution, using open source software and NASA satellite data that are global in coverage.
 
 ### 2015
 
@@ -43,6 +45,7 @@
 * [Github - Deep networks for Earth Observation](https://github.com/nshaud/DeepNetsForEO) - Pretrained [Caffe](https://github.com/bvlc/caffe) [SegNet](https://arxiv.org/abs/1511.02680) models trained on [ISPRS Vaihingen](http://www2.isprs.org/commissions/comm3/wg4/2d-sem-label-vaihingen.html) dataset and [ISPRS Potsdam](http://www2.isprs.org/potsdam-2d-semantic-labeling.html) datasets.
 * [Github - Raster Vision](https://github.com/azavea/raster-vision) - Deep learning for aerial/satellite imagery. [ResNet50](https://arxiv.org/abs/1512.03385), [Inception v3](https://arxiv.org/abs/1512.00567), [DenseNet121](https://arxiv.org/abs/1608.06993), [DenseNet169](https://arxiv.org/abs/1608.06993) models. Uses [Keras](https://keras.io/) and [Tensorflow](https://www.tensorflow.org/).
 * [Github - Deep Learning Tutorial for Kaggle Ultrasound Nerve Segmentation competition, using Keras](https://github.com/jocicmarko/ultrasound-nerve-segmentation) - This monster was used in 1tst place solution to DSTL Kaggle satellite challenge.
+* [Predicting Poverty and Developmental Statistics from Satellite Images using Multi-task Deep Learning - Github](https://github.com/agarwalt/satimage) - Keras, Google sat. images, India cencus data.
 
 ### DSTL - Kaggle
 
@@ -81,9 +84,24 @@ Sentinel 2 data looking the most promising. (10m resolution for R,G,B + NIF)
 * [2D Semantic Labeling - Vaihingen data](http://www2.isprs.org/commissions/comm3/wg4/2d-sem-label-vaihingen.html) - This is from a true orthophotographic survey (from a plane). The data is 9cm resolution!
 * [SAT-4 and SAT-6 airborne datasets](http://csc.lsu.edu/~saikat/deepsat/) - very high res (1m) whole of US. 65 Terabytes. (DeepSat) 1m/px. (2015). SAT-4: barren land, trees, grassland, other. SAT-6: barren land, trees, grassland, roads, buildings, water bodies. (RGB + NIR) 
 * [UC Merced Land Use Dataset](http://vision.ucmerced.edu/datasets/landuse.html) - 2100 256 × 256, 1m/px aerial RGB images over 21 land use classes. (2010)
+* [Open street map landuse](http://osmlanduse.org/#11/-3.23866/51.57133/0/) - Visualised in this tool. Some studies have used this in combo. with google sat. images.
 
 ## Other
 
 * [Terrapattern](http://www.terrapattern.com/about) - alpha version of Terrapattern: "similar-image search" for satellite photos. They use a ResNet. This is truely awesome.
 * [European Environment Agency - Urban Atlas](https://www.eea.europa.eu/data-and-maps/data/urban-atlas) - Land cover data for Large Urban Zones with more than 100.000 inhabitants.
 * [Satellite imagery - what can hospital carparks tell us about disease outbreak?](http://online.qmags.com/CMG0414/Default.aspx?pg=97&mode=2&imm_mid=0bb43a&cmp=em-strata-na-na-newsltr_20140423_elist#pg97&mode2)
+
+## Tools/utilities
+
+* [Sentinelsat - Github](https://github.com/sentinelsat/sentinelsat) - Utility to search and download Copernicus Sentinel satellite images.
+
+## Visualisations/existing tools
+
+* [Global Forest Watch: An online, global, near-real time forest monitoring tool - Github](https://github.com/Vizzuality/gfw) - Really nice site. Also has an option to overlay Sentinel 2 images from specific dates.
+* [Visualize AWS Sentinel-2 data in different band combinations](http://apps.sentinel-hub.com/sentinel-playground/?source=S2&lat=51.532348250305354&lng=-3.2268905639648438&zoom=12&preset=5_VEGETATION_INDEX&layers=B04,B03,B02&maxcc=20&gain=1&gamma=1&time=2015-01-01%7C2017-10-31&atmFilter=&showDates=false)
+
+## Meta
+
+* [Github satellite-imagery view](https://github.com/topics/satellite-imagery) - Good starting point.
+* [Awesome Sentinel - Github](https://github.com/Fernerkundung/awesome-sentinel) - Sat data tools/utils/visualisations etc.
