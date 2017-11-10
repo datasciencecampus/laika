@@ -68,6 +68,8 @@ y# References and resources
 
 * [Fully Convolutional Networks for Semantic Segmentation](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf) - \*\*\*
 
+* [U-Net: Convolutional Networks for Biomedical Image Segmentation](https://arxiv.org/pdf/1505.04597.pdf) - Used for 2nd place in DSTL challenge.
+
 ## Models
 
 ### Satellite
