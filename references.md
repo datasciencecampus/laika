@@ -113,6 +113,7 @@ Keras implementations:
 
 (note these are all the basic version from the paper.
 
+* [segnet](https://github.com/preddy5/segnet) 95 stars.
 * [keras-segnet](https://github.com/imlab-uiip/keras-segnet) 65 stars.
 * [SegNet-Basic])https://github.com/0bserver07/Keras-SegNet-Basic) 30 stars
 * [image-segmentation-keras](https://github.com/divamgupta/image-segmentation-keras) 10 stars. Also some other's (u-net, fcn etc.)
