@@ -37,4 +37,5 @@ fully connected layers = more parameters.
 ```
 pip3 install pydot-ng
 brew install install graphviz
+pip3 install opencv-python
 ```
