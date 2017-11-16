@@ -10,6 +10,8 @@ y# References and resources
 
 * [Deep Learning Based Large-Scale Automatic Satellite Crosswalk Classification](https://arxiv.org/pdf/1706.09302.pdf) - Zebra crossing identification using Google sat image data + Open street map zebra crossing locations. Associated code [here](https://github.com/rodrigoberriel/satellite-crosswalk-classification).
 
+* [Learning Aerial Image Segmentation from Online Maps](https://arxiv.org/pdf/1707.06879.pdf)
+
 #### 2016
 
 * [Classification and Segmentation of Satellite Orthoimagery Using Convolutional Neural Networks](https://ai2-s2-pdfs.s3.amazonaws.com/6269/c25f3cebe4dba83bd7feb78735796ffcdf6d.pdf) - Per pixel classification of vegetation, ground, roads, buildings and water. Per pixel is done in a sliding window: the pixel to be classified is the centre pixel of the window. The window has a number of dimensions (typically r, g, b) correspsonding to the wavelengths available from the satellite. Eg., may have an extra channel for near infrared. Standard CNN used: stacked conv-layers, fc layer and finally a softmax classifiier. ReLUs have been used in conv-layer. The fc layer used here is actually a 1000 hidden unit denoising auto-encoder. Has a post processing step: pixel-by-pixel classifications are likely to involve noise - e.g., a single pixel classified as an industrial area in the middle of a field/ "salt and pepper misclassifications" SLIC and other averaging has been used here. Interestingly, paper mentions using DBSCAN - a form of density clustering to solve this.  
