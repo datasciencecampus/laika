@@ -32,10 +32,11 @@ fully connected layers = more parameters.
 * keras
 * pydot
 * graphviz
-
+* h5py
 
 ```
 pip3 install pydot-ng
 brew install install graphviz
 pip3 install opencv-python
+pip3 install h5py
 ```

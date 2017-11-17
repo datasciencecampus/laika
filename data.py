@@ -2,6 +2,7 @@ import json
 import numpy as np
 import pandas as pd
 import cv2
+import h5py
 
 
 def load_image(img_location, height, width):
@@ -62,7 +63,7 @@ def load_label(label_location, height, width, num_classes):
     return masks
 
 
-def load_data(skynet_data="../skynet-data/data", width=256, height=256):
+def load_skynet_data(skynet_data="../skynet-data/data", width=256, height=256):
     """"load images and image labels from skynet directory.
  
     result is a tuple of 2 matrices (images, labels) with 1 row per image.
@@ -92,6 +93,21 @@ def load_data(skynet_data="../skynet-data/data", width=256, height=256):
         labels.append(masks)
 
     return np.array(images), np.array(labels)
+
+
+def load_hdf5_data(img_src="data/images.hdf5", labels_src="data/labels.hdf5"):
+    """load image and label data from hdf5 file."""
+    pass
+
+
+def load_data():
+    """load image and label data."""
+    pass
+
+
+def save_data(images, labels, dst="data/"):
+    """persist image and label data."""
+    pass
 
 
 if __name__ == "__main__":

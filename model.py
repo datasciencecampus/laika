@@ -5,8 +5,6 @@
 
 from keras.models import Sequential
 from keras.layers import Layer, Conv2D, BatchNormalization, Activation, MaxPooling2D, Reshape, Permute, UpSampling2D, ZeroPadding2D
-from keras.optimizers import SGD
-from keras.utils import plot_model
 
 from keras import backend as K
 K.set_image_data_format("channels_first")
