@@ -10,7 +10,7 @@ from keras import backend as K
 K.set_image_data_format("channels_first")
 
 
-def model(img_channels=3, img_width=256, img_height=256):
+def model(img_channels=3, img_width=256, img_height=256, classes=7):
     """define a basic segnet model."""
     model = Sequential()
 
@@ -59,12 +59,9 @@ def model(img_channels=3, img_width=256, img_height=256):
     model.add(BatchNormalization())
 
     # output layer
-    model.add(Conv2D(filters=12, kernel_size=1, padding="valid"))
-    model.add(Reshape((12, img_width*img_height), input_shape=(12, img_height, img_width)))
+    model.add(Conv2D(filters=classes, kernel_size=1, padding="valid"))
+    model.add(Reshape((classes, img_width*img_height), input_shape=(classes, img_height, img_width)))
     model.add(Permute((2, 1)))
     model.add(Activation("softmax"))
 
     return model
-
-#print(model.summary())
-#plot_model(model, to_file="/tmp/x.png")
