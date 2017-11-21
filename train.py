@@ -23,7 +23,7 @@ m.compile(loss="categorical_crossentropy", optimizer=opt, metrics=["accuracy"])
 print("Model compiled.")
 
 images, labels = load_data()
-images, labels = images[:100], labels[:100] # dev
+#images, labels = images[:100], labels[:100] # dev
 
 # shuffle dataset.
 total = len(images)
