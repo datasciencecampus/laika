@@ -3,20 +3,24 @@ import os
 os.environ["KERAS_BACKEND"] = "theano"
 os.environ["THEANO_FLAGS"] = "mode=FAST_RUN, device=cuda, floatX=float32, optimizer=fast_compile"
 
-import csv
 import numpy as np
-from keras.optimizers import SGD
-from keras.callbacks import CSVLogger, EarlyStopping
 
 from model import model
 from data import load_data
 
 m = model()
+
+print("Loading weights.")
 m.load_weights("weights.hdf5")
 
-images = None # load images to segment
+print("Loading test data.")
+images, labels = load_data(filtered="test-sample-filtered.txt", hdf5_data="data/testing.hdf5") 
 
+images, labels = images[:10], labels[:10] # dev
+
+print("Predicting")
 segments = m.predict(images)
+
 
 
 # for each image:

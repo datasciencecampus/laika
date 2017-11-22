@@ -11,7 +11,7 @@ from keras.callbacks import CSVLogger, EarlyStopping
 from model import model
 from data import load_data
 
-epochs = 100 
+epochs = 2
 
 m = model()
 print("Loaded model.")
@@ -23,7 +23,7 @@ m.compile(loss="categorical_crossentropy", optimizer=opt, metrics=["accuracy"])
 print("Model compiled.")
 
 images, labels = load_data()
-#images, labels = images[:100], labels[:100] # dev
+images, labels = images[:100], labels[:100] # dev
 
 # shuffle dataset.
 total = len(images)

@@ -66,13 +66,13 @@ def load_skynet_label(label_location, height, width, num_classes):
     return masks
 
 
-def load_skynet_data(skynet_data="../skynet-data/data", width=256, height=256):
+def load_skynet_data(skynet_data="../skynet-data/data", filtered="sample-filtered.txt", width=256, height=256):
     """"load images and image labels from skynet directory.
  
     result is a tuple of 2 matrices (images, labels) with 1 row per image.
     """
     # skynet images with _at least_ 1 labelled pixel.
-    non_empty = pd.read_csv(skynet_data + "/sample-filtered.txt", sep=" ", header=None)
+    non_empty = pd.read_csv("{}/{}".format(skynet_data,filtered), sep=" ", header=None)
 
     ### images
     images = [load_skynet_image("{}/images/{}-{}-{}.jpg".format(skynet_data, *row[1:4]), height, width) for _, row in non_empty.iterrows()]
@@ -89,7 +89,7 @@ def load_skynet_data(skynet_data="../skynet-data/data", width=256, height=256):
     return np.array(images), np.array(labels)
 
 
-def load_data(skynet_data="../skynet-data/data", hdf5_data="data/training.hdf5", width=256, height=256):
+def load_data(skynet_data="../skynet-data/data", filtered="sample-filtered.txt", hdf5_data="data/training.hdf5", width=256, height=256):
     """load training data.
    
     will load pre-processed data in data/training.hdf5 (if exists).
@@ -98,15 +98,15 @@ def load_data(skynet_data="../skynet-data/data", hdf5_data="data/training.hdf5",
     result is a tuple of 2 matrices (images, labels) with 1 row per image.
     """
     if not os.path.isfile(hdf5_data):
-        print("Loading training data from skynet.")
-        images, labels = load_skynet_data(skynet_data, width, height)
+        print("Loading data from skynet.")
+        images, labels = load_skynet_data(skynet_data, filtered, width, height)
         hdf5 = h5py.File(hdf5_data, "w")
         hdf5.create_dataset("images", data=images)
         hdf5.create_dataset("labels", data=labels)
         hdf5.close()
         return images, labels
     else:
-        print("Loading training data from HDF5.")
+        print("Loading data from HDF5.")
         hdf5 = h5py.File(hdf5_data, "r")
         images = hdf5.get("images")[()]
         labels = hdf5.get("labels")[()]
