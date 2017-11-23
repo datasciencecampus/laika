@@ -18,7 +18,7 @@ m.load_weights("weights.hdf5")
 print("Loading test data.")
 images, labels = load_data(filtered="test-sample-filtered.txt", hdf5_data="data/testing.hdf5") 
 
-images, labels = images[:10], labels[:10] # dev
+#images, labels = images[:10], labels[:10] # dev
 
 print("Compiling model.")
 m.compile(loss="categorical_crossentropy", metrics=["accuracy"], optimizer=SGD(lr=0.001, momentum=0.9, decay=0.0005, nesterov=False))
@@ -32,6 +32,7 @@ print("Predicting")
 segments = m.predict(images)
 
 print("Writing predictions.")
+# store the or
 hdf5 = h5py.File("predictions.hdf5", "w")
 hdf5.create_dataset("predictions", data=segments)
 hdf5.close()
