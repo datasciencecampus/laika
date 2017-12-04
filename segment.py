@@ -1,13 +1,12 @@
 import os
-
-os.environ["KERAS_BACKEND"] = "theano"
-os.environ["THEANO_FLAGS"] = "mode=FAST_RUN, device=cuda, floatX=float32, optimizer=fast_compile"
-
 from keras.optimizers import SGD
-import h5py 
+import h5py
 
 from model import model
 from data import load_data
+
+os.environ["KERAS_BACKEND"] = "theano"
+os.environ["THEANO_FLAGS"] = "mode=FAST_RUN, device=cuda, floatX=float32, optimizer=fast_compile"
 
 
 m = model()
@@ -16,7 +15,7 @@ print("Loading weights.")
 m.load_weights("weights.hdf5")
 
 print("Loading test data.")
-images, labels = load_data(filtered="test-sample-filtered.txt", hdf5_data="data/testing.hdf5") 
+images, labels = load_data(filtered="test-sample-filtered.txt", hdf5_data="data/testing.hdf5")
 
 #images, labels = images[:10], labels[:10] # dev
 

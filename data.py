@@ -72,7 +72,7 @@ def load_skynet_data(skynet_data="../skynet-data/data", filtered="sample-filtere
     result is a tuple of 2 matrices (images, labels) with 1 row per image.
     """
     # skynet images with _at least_ 1 labelled pixel.
-    non_empty = pd.read_csv("{}/{}".format(skynet_data,filtered), sep=" ", header=None)
+    non_empty = pd.read_csv("{}/{}".format(skynet_data, filtered), sep=" ", header=None)
 
     ### images
     images = [load_skynet_image("{}/images/{}-{}-{}.jpg".format(skynet_data, *row[1:4]), height, width) for _, row in non_empty.iterrows()]
