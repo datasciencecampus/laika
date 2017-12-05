@@ -168,66 +168,31 @@ Bleeding edge. More details [here](https://hszhao.github.io/projects/pspnet/inde
 
 ## Datasets
 
-### Raw data
-
-Sentinel 2 data looking the most promising. (10m resolution for R,G,B + NIF) 
-(20m for shorter wavelengths). - see [MultiSpectral Instrument (MSI) Overview](https://earth.esa.int/web/sentinel/technical-guides/sentinel-2-msi/msi-instrument) for instrument details.
-
-**idea -- downscale higher resolution pre-labelled data to 10m per pixel if can not find pre-labelled 10m dataset**
-
-
-* [Copernicus Open Access Hub](https://scihub.copernicus.eu/) - The Copernicus Open Access Hub (previously known as Sentinels Scientific Data Hub) provides complete, free and open access to [Sentinel-1](https://sentinel.esa.int/web/sentinel/missions/sentinel-1), [Sentinel-2](https://sentinel.esa.int/web/sentinel/missions/sentinel-2) and [Sentinel-3](https://sentinel.esa.int/web/sentinel/missions/sentinel-3).
-
-* [Satellite Applications Catapult - Data discovery hub](http://data.satapps.org/) - Very nice. Lists pretty much everything.
-
-* [Satellite Applications Catapult - Sentinel Data Access Service (SEDAS)](https://sa.catapult.org.uk/facilities/sedas/]) - (API) portal enabling end-users to search and download data from Sentinel 1 & 2 satellites. It aims to lower barriers to entry and create the foundations for an integrated approach to satellite data access.
-
-* [Google](https://developers.google.com/maps/documentation/static-maps/) - 25k per day... :) - would also be easy to build testing tool from this..  
-
-### Pre-labelled
-
-* [DSTL - Kaggle](https://www.kaggle.com/c/dstl-satellite-imagery-feature-detection)
-
-* [Draper Satellite Image Chronology - Kaggle](https://www.kaggle.com/c/draper-satellite-image-chronology)
-
-* [Understanding the Amazon from Space - Kaggle](https://www.kaggle.com/c/planet-understanding-the-amazon-from-space)
-
-* [Ships in Satellite Imagery - Kaggle](https://www.kaggle.com/rhammell/ships-in-satellite-imagery) - From [Open California](https://www.planet.com/products/open-california/) dataset.
-
-* [2D Semantic Labeling - Vaihingen data](http://www2.isprs.org/commissions/comm3/wg4/2d-sem-label-vaihingen.html) - This is from a true orthophotographic survey (from a plane). The data is 9cm resolution!
-
-* [SAT-4 and SAT-6 airborne datasets](http://csc.lsu.edu/~saikat/deepsat/) - very high res (1m) whole of US. 65 Terabytes. (DeepSat) 1m/px. (2015). SAT-4: barren land, trees, grassland, other. SAT-6: barren land, trees, grassland, roads, buildings, water bodies. (RGB + NIR) 
-
 
 #### Land-use
 
 * [Skynet - Data pipeline for machine learning with OpenStreetMap - Github](https://github.com/developmentseed/skynet-data) - Uses OSM QA tiles.
 
-* [UC Merced Land Use Dataset](http://vision.ucmerced.edu/datasets/landuse.html) - 2100 256 × 256, 1m/px aerial RGB images over 21 land use classes. US specific. (2010)
-
-* [Open street map landuse](http://osmlanduse.org/#11/-3.23866/51.57133/0/) - OSM landuse visualised in this tool. Some studies have used this in combo. with google sat. images.
 
 ## Other
 
 * [Terrapattern](http://www.terrapattern.com/about) - alpha version of Terrapattern: "similar-image search" for satellite photos. They use a ResNet. This is truely awesome.
 
-* [European Environment Agency - Urban Atlas](https://www.eea.europa.eu/data-and-maps/data/urban-atlas) - Land cover data for Large Urban Zones with more than 100.000 inhabitants.
-
 * [Satellite imagery - what can hospital carparks tell us about disease outbreak?](http://online.qmags.com/CMG0414/Default.aspx?pg=97&mode=2&imm_mid=0bb43a&cmp=em-strata-na-na-newsltr_20140423_elist#pg97&mode2)
 
 * [TEP Urban platform - Thematic Apps](https://urban-tep.eo.esa.int/#!thematic) - Lots of things. [Urban density](https://urban-tep.eo.esa.int/geobrowser/?id=guf#!&context=GUFDensity%2FGUF-DenS2012) / GUF. Derived from sat data.
 
-* [SpaceNetChallenge utlitiles - Github](https://github.com/SpaceNetChallenge/utilities) - Packages intended to assist in the preprocessing of SpaceNet satellite imagery data corpus to a format that is consumable by machine learning algorithms.
 
 ## Tools/utilities
+
+
+* [SpaceNetChallenge utlitiles - Github](https://github.com/SpaceNetChallenge/utilities) - Packages intended to assist in the preprocessing of SpaceNet satellite imagery data corpus to a format that is consumable by machine learning algorithms.
 
 * [Sentinelsat - Github](https://github.com/sentinelsat/sentinelsat) - Utility to search and download Copernicus Sentinel satellite images.
 
 ## Visualisations/existing tools
 
 * [Global Forest Watch: An online, global, near-real time forest monitoring tool - Github](https://github.com/Vizzuality/gfw) - Really nice site. Also has an option to overlay Sentinel 2 images from specific dates.
-
-* [Visualize AWS Sentinel-2 data in different band combinations](http://apps.sentinel-hub.com/sentinel-playground/?source=S2&lat=51.532348250305354&lng=-3.2268905639648438&zoom=12&preset=5_VEGETATION_INDEX&layers=B04,B03,B02&maxcc=20&gain=1&gamma=1&time=2015-01-01%7C2017-10-31&atmFilter=&showDates=false)
 
 ## Meta
 

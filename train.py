@@ -1,3 +1,5 @@
+# train image segmentation model.
+
 import os
 
 os.environ["KERAS_BACKEND"] = "theano"

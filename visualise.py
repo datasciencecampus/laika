@@ -13,6 +13,7 @@ def combine_image(label_img, sat_img, alpha=128):
 
 
 def class_heatmap(heat_deciles, pixel_probabilities, height, width, invert=False, ignore_cut_off=-1, bg_alpha=0, fg_alpha=255):
+    """visualise class probabilities"""
     bins = np.floor(pixel_probabilities*10) # discretise
     bins = bins.astype("uint8")
     heat = heat_deciles[::-1] if invert else heat_deciles

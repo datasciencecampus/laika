@@ -1,3 +1,7 @@
+#
+# load model and validate with test data.
+
+
 import os
 from keras.optimizers import SGD
 import h5py

@@ -23,22 +23,34 @@ def segment(prediction):
 
 
 def load_image(img_src):
+    """just load an image.
+
+    returns numpy array.
+    """
     return cv.imread(img_src)
 
 
 def prep_image(img):
+    """prepare image for input into network."""
+    # move channel column to front. (RGB, height, width) 
     img = np.rollaxis(img, 2)
+    # normalise pixels
     img = img/255
     return img
 
 
 def load_model(weight_src="weights.hdf5"):
+    """load pre-trained model"""
     m = model()
     m.load_weights(weight_src)
     return m
 
 
 def write_class_heatmaps(prediction, output_dir="/tmp", height=256, width=256):
+    """write class heatmaps.
+
+    one image per class (for debugging)
+    """
     magenta = np.array([
         [255,255,255],
         [255,247,243],
@@ -60,6 +72,9 @@ def write_class_heatmaps(prediction, output_dir="/tmp", height=256, width=256):
 
         
 def write_segments(input_image, pixel_classes, output_dir="/tmp", height=256, width=256):
+    """write segmented image
+
+    output image is original with overlayed translucent segments."""
     class_colours = np.array([
         [255,255,255], # white: background/unlabeled
         [152,78,163],  # purple: residential
@@ -71,6 +86,7 @@ def write_segments(input_image, pixel_classes, output_dir="/tmp", height=256, wi
     img = segment_image(class_colours, pixel_classes, height, width, bg_alpha=0, fg_alpha=192)
     combined_img = combine_image(img, input_image)
     f = "{}/segments.png".format(output_dir)
+    
     combined_img.save(f)
 
     
@@ -82,20 +98,24 @@ if __name__ == "__main__":
 
     weight_src, img_src, output_dir = sys.argv[1:]
 
+    # load input image
     input_image = load_image(img_src)
     img_arr = prep_image(input_image)
-
     assert img_arr.shape == (3, 256, 256)
-   
-    input_image = Image.fromarray(input_image)
-    img_arr = np.reshape(img_arr, (1, 3, 256, 256))
+
+    # load model
     m = load_model(weight_src)
 
+    # get prediction   
+    input_image = Image.fromarray(input_image)
+    img_arr = np.reshape(img_arr, (1, 3, 256, 256))
     prediction = m.predict(img_arr)
     prediction = prediction[0]
 
+    # class heatmaps
     write_class_heatmaps(prediction, output_dir)
 
+    # segmented image
     pixel_classes = segment(prediction)
     write_segments(input_image, pixel_classes, output_dir)
 

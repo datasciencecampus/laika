@@ -1,4 +1,4 @@
-# Success Criteria - project laika
+# Success criteria
 
 This document outlines the success criteria for project laika.
 
