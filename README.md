@@ -26,8 +26,201 @@ breakdown of this project's goals.
 
 # Running the code
 
+The following steps describe the end-to-end flow for the current work in 
+progress. The implementation makes use of a utility to help build a training
+dataset, and a SegNet encoder/decoder network for image segmentation.
 
 
+## Creating a training dataset
+
+Install some os deps:
+```
+brew install mapnik
+brew install paralell
+```
+
+Clone and install the skynet-data project:
+
+```
+git clone https://github.com/developmentseed/skynet-data
+cd skynet-data
+```
+
+The [skynet-data](https://github.com/developmentseed/skynet-data) project is a
+tool for sampling [OSM QA tiles](https://osmlab.github.io/osm-qa-tiles/) and
+associated satelite image tiles from [MapBox](https://www.mapbox.com/maps/satellite/).
+
+The first task is to decide what classes to include in the dataset. These are 
+specified in a JSON configuration file and follow the osm tag format. This 
+project attempts to identify **6** types of land use and objects:
+
+* [residential](http://wiki.openstreetmap.org/wiki/Tag:landuse%3Dresidential)
+* [commercial](http://wiki.openstreetmap.org/wiki/Tag:landuse%3Dcommercial)
+* [industrial](http://wiki.openstreetmap.org/wiki/Tag:landuse%3Dindustrial)
+* [vegetation](http://wiki.openstreetmap.org/wiki/Tag:landuse%3Dgrass) (A hierarchical filter including woodland, trees, scrub, grass etc.)
+* [buildings](http://wiki.openstreetmap.org/wiki/Key:building) Note the extensive list of building types.
+* [brownfield](http://wiki.openstreetmap.org/wiki/Tag:landuse%3Dbrownfield)
+
+`cd` into `classes` and create a new configuration `mine.json`:
+
+```json
+[{
+  "name": "residential",
+  "color": "#010101",
+  "stroke-width": "1",
+  "filter": "[landuse] = 'residential'",
+  "sourceLayer": "osm"
+}, {
+  "name": "commercial",
+  "color": "#020202",
+  "stroke-width": "1",
+  "filter": "[landuse] = 'commercial'",
+  "sourceLayer": "osm"
+}, {
+  "name": "industrial",
+  "color": "#030303",
+  "stroke-width": "1",
+  "filter": "[landuse] = 'industrial'",
+  "sourceLayer": "osm"
+}, {
+  "name": "vegetation",
+  "color": "#040404",
+  "stroke-width": "1",
+  "filter": "([natural] = 'wood') or 
+             ([landuse] = 'forest') or 
+             ([landuse] = 'tree_row') or 
+             ([landuse] = 'tree') or 
+             ([landuse] = 'scrub') or 
+             ([landuse] = 'heath') or 
+             ([landuse] = 'grassland') or 
+             ([landuse] = 'orchard') or 
+             ([landuse] = 'farmland') or 
+             ([landuse] = 'tree') or 
+             ([landuse] = 'allotments') or 
+             ([surface] = 'grass') or 
+             ([landuse] = 'meadow') or 
+             ([landuse] = 'vineyard')",
+  "sourceLayer": "osm"
+},
+{
+  "name": "building",
+  "color": "#050505",
+  "stroke-width": "1",
+  "filter": "[building].match('.+')",
+  "sourceLayer": "osm"
+},
+{
+  "name": "brownfield",
+  "color": "#060606",
+  "stroke-width": "1",
+  "filter": "[landuse] = 'brownfield'",
+  "sourceLayer": "osm"
+}]
+```
+
+The skynet-data tool will use this configuration to create ground-truth labels
+for the specified classes. For each satelite image instance, it's pixel-by-pixel
+ground-truth will be encoded as an image with the same size as the satelite
+image. An individual class will be encoded by colour, such that a specific pixel
+belonging to an individual class will assume one of **7** colour values 
+corresponding to the above configuration.
+
+For example, a pixel belonging to the **vegetation** class will assume the RGB
+colour `#040404` and a building will assume the value `#050505`. Note that these
+can be any RGB colour. For convenience, I have chosen to encode the class number
+in each of the 3 RGB bytes so that it can be easily retrieved later on without
+the need for a lookup table.
+
+Note that it is possible for a pixel to assume an **unknown** class in which
+case, it can be considered as "background". Thus Unknown pixels have been 
+encoded as `#000000` (the 7th class).
+
+Next, in the `skynet-data` parent directory, add the following to the 
+`Makefile`:
+
+```
+QA_TILES?=united_kingdom
+BBOX?='-3.3843,51.2437,-2.3923,51.848'
+IMAGE_TILES?="tilejson+https://a.tiles.mapbox.com/v4/mapbox.satellite.json?access_token=$(MapboxAccessToken)"
+TRAIN_SIZE?=10000
+CLASSES?=classes/mine.json
+ZOOM_LEVEL?=17
+```
+
+This will instruct the proceeding steps to download 10,000 images from within a
+bounding box (defined as part of the South-west here). The images will be 
+randomly sampled within the bounding box area. Zoom level 17 corresponds to 
+approx. 1m per pixel resolution. To specify the bounding box area, 
+[this tool](https://tools.geofabrik.de/calc/) is quite handy. Note that 
+coordinates are specified in the following form:
+
+```
+-lon, -lat, +lon, +lat
+```
+
+Before following the next steps, go to [MapBox](https://www.mapbox.com/) and 
+sign up for a developer key.
+
+
+Having obtained your developer key from MapBox, store it in an env. variable:
+
+```
+export MapboxAccessToken="my_secret_token"
+```
+
+Then initiate the download process:
+
+```
+make clean
+rm -f data/all_tiles.txt
+make download-osm-tiles
+make data/all_tiles.txt
+make data/sample.txt
+make data/labels/color
+make data/images
+```
+
+You will end up with 10,000 images in `data/images` and 10,000 "ground truth"
+images in `data/labels`. `data/sample-filtered.txt` contains a list of files of
+which **at least 1 pixel** belongs to a specified class.
+
+![Image sampling](img/sample_01.png)
+
+Note, that there is in a convenience tool in the skynet-data utility for quickly
+viewing the downloaded data. To use it, first install a local webserver, e.g.,
+[Nginx](https://www.nginx.com/) and add an alias to the `preview.html` file. You
+can then visualise the sampled tiles by following a URL of the following form:
+
+`http://localhost:8080/preview.html?accessToken=MAPBOX_KEY&prefix=data`
+
+See [notebooks](notebooks/) for a visual inspection of some of the data. The 
+following shows some of the downloaded tiles with overlaid OSM labels:
+
+![OSM labels](img/osm_labels.png)
+
+The level of detail can be quite fine in places, while in others, quite sparse.
+This example shows a mix of industrial (yellow) and commercial (blue) land areas
+mixed in with buildings (red) and vegetation (green).
+
+## The model
+
+...
+
+### Training
+
+...
+
+### Validating
+
+...
+
+### Testing 
+
+...
+
+## Further work/notes 
+
+... 
 
 # Background research
 
