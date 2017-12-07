@@ -204,11 +204,35 @@ mixed in with buildings (red) and vegetation (green).
 
 ## The model
 
-...
+The model implemented here is the [SegNet](http://mi.eng.cam.ac.uk/projects/segnet/) 
+encoder/decoder architecture. There are 2 variations of this architecure, of
+which the simplified version has been implemented here.
+See [paper](http://arxiv.org/abs/1511.00561) for details. Briefly, the 
+architecture is suited for multi-class pixel-by-pixel segmentation and has been
+shown to be effective in scene understanding tasks. Given this. it **may** also
+be suited to segmentation of satelite imagery.
+
+Side note: The architecutre has been shown to be very effective at segmenting 
+images from car dashboard cameras, and is of immediate interest in our street
+-view related research.
+
+The model, specified in [model.py](model.py), consists of 2 main components.
+The first is an **encoder** which takes as input a 256x256 RGB image and 
+compresses the image into a set of features. In fact, this component is the 
+same as a [VGG16](http://www.robots.ox.ac.uk/~vgg/research/very_deep/) network
+without the final fully connected layer. In place of the final fully connected
+layer, the encoder is connected to a decoder. This decoder is a reverse image
+of the encoder, and acts to up-sample the features.
+
+The final output of the model is a N\*p matrix, where p = 256\*256 corresponding
+to the original number of image pixels and N = the number of segment classes. As
+such, each pixel has an associated class probability vector. The predicted 
+segment/class can be extrcacted by taking the the max of these values.
+
 
 ### Training
 
-...
+![img
 
 ### Validating
 
@@ -449,7 +473,7 @@ OMS project should manual labeling be necessary.
 
 ## Modeling
 
-The proof of concept in this project makes use of deep concepts from deep 
+The proof of concept in this project makes use of concepts from deep 
 learning. A review of the current state of the art, covering papers, articles,
 competitive data science platform results and open source projects indicates 
 that the most recent advances have been in the area of image segmentation - most
