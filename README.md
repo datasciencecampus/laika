@@ -19,8 +19,30 @@ for testing recent and future developments.
 
 * [Goals](#goals)
 * [Running the code](#running-the-code)
-	* [Creating a training dataset](#creaing-a-training-dataset)
-
+  * [Creating a training dataset](#creating-a-training-dataset)
+  * [The model](#the-model)
+    * [Training](#training)
+    * [Validating](#validating)
+    * [Running](#running)
+  * [Further work/notes](#further-work/notes)
+* [Background research](#background-research)
+  * [Satellite themes of interest](#satellite-themes-of-interest)
+    * [Earth Observation (EO)](#earth-observation)
+    * [Object detection](#object-detection)
+  * [Computer vision themes of interest](#computer-vision-themes-of-interest)
+  * [Data sources](#data-sources)
+    * [Raw image data](#raw-image-data)
+    * [Pre-labeled image data](#pre-labeled-image-data)
+    * [Object and land-use labels](#object-and-land-use-labels)
+  * [Modeling](#modelling)
+    * [Modeling papers](#modeling-papers)
+    * [Model implementations](#model-implementations)
+    * [Image segmentation model implementations](#image-segmentation-model-implementations)
+  * [Comeptitive data science](#comeptitive-data-science)
+  * [Tools/utilities](#Tools/utilities)
+  * [Visualisations/existing tools](#visualisations/existing-tools)
+  * [Projects using Sentinel data](#projects-using-sentinel-data)
+  * [Blogs](#blogs)
 
 ## Goals
 
@@ -475,7 +497,7 @@ with the exception of it's panchromatic sensor, which is capable of capturing
 !["Landsat 8"](img/landsat_8.png)
 
 
-#### Data sources
+#### Links 
 
 * [sentinel-playground](http://apps.sentinel-hub.com/sentinel-playground/?source=S2&lat=51.653814904471545&lng=-3.021240234375&zoom=8&preset=2_COLOR_INFRARED__VEGETATION_&layers=B04,B03,B02&maxcc=20&gain=1.0&gamma=1.0&time=2015-01-01%7C2017-12-05&atmFilter=&showDates=false) - This is a nice demo showing the available sentinel-2 bands.
 
@@ -561,7 +583,7 @@ matrices with the same dimensions as the original input image.
 
 The following papers and resources provide a good overview of the field.
 
-### Papers
+### Modeling Papers
 
 #### Satelite specific
 
@@ -665,7 +687,7 @@ point:
 5) [FCN](https://github.com/SpaceNetChallenge/BuildingDetectors/tree/master/bic-user) (Keras)
 
 
-### Model image segmentation model implementations
+### Image segmentation model implementations
 
 #### General
 
