@@ -19,7 +19,7 @@ for testing recent and future developments.
 
 * [Goals](#goals)
 * [Running the code](#running-the-code)
-  * [Creating a training dataset](#creaing-a-training-dataset)
+	* [Creating a training dataset](#creaing-a-training-dataset)
 
 
 ## Goals
