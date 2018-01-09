@@ -1,4 +1,4 @@
-# Project Laika
+# Laika 
 
 > Experiments with satellite image data.
 
@@ -232,7 +232,9 @@ segment/class can be extrcacted by taking the the max of these values.
 
 ### Training
 
-![img
+
+
+![img](img/error.png)
 
 ### Validating
 
