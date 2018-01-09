@@ -15,6 +15,12 @@ for testing recent and future developments.
 
 **Note that this project is intended to form a starting point for future research**
 
+## Table of contents
+
+* [Goals](#goals)
+* [Running the code](#running-the-code)
+  * [Creating a training dataset](#creaing-a-training-dataset)
+
 
 ## Goals
 
@@ -246,8 +252,8 @@ python3 train.py
 previous step. Note that by default, train.py expects to find this data in
 `../skynet-data/data`. Having loaded the raw training data and associated
 segment labels into a numpy array, the data are stored in
-[HDF5(]https://en.wikipedia.org/wiki/Hierarchical_Data_Format) format in
-`data/training.hdf5`. On subsequent runs, the [data.py](data loader) will first
+[HDF5](https://en.wikipedia.org/wiki/Hierarchical_Data_Format) format in
+`data/training.hdf5`. On subsequent runs, the [data loader](data.py) will first
 look for this HDF5 data as to reduce the startup time. Note that the 
 `data/training.hdf5` can be used by other models/frameworks/languages.
 
@@ -295,19 +301,10 @@ python3 feed_forward.py <hdf5 weights> <img location> <output dir>
 ```
 
 Specifically, given an input satellite image, the script outputs the number of
-pixels belonging to one of the following classes:
-
-* background
-* residential
-* commercial
-* industrial
-* vegetation
-* building
-* brownfield
-
-Such that the sum of class pixels = total number of pixels in the image. In
-addition, the script will output *class heatmaps* and *class segments* 
-visualisations in to the `<output dir>`. 
+pixels belonging to one the 8 land-use classes, such that the sum of class 
+pixels = total number of pixels in the image. In addition, the script will 
+output *class heatmaps* and *class segments* visualisations in to the 
+`<output dir>`. 
 
 ![segmented](img/segmented.png)
 
