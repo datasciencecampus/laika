@@ -24,23 +24,36 @@ for testing recent and future developments.
     * [Training](#training)
     * [Validating](#validating)
     * [Running](#running)
-  * [Further work/notes](#further-work/notes)
+  * [Further work](#further-work)
 * [Background research](#background-research)
   * [Satellite themes of interest](#satellite-themes-of-interest)
-    * [Earth Observation (EO)](#earth-observation)
+    * [Earth Observation](#earth-observation)
     * [Object detection](#object-detection)
   * [Computer vision themes of interest](#computer-vision-themes-of-interest)
   * [Data sources](#data-sources)
     * [Raw image data](#raw-image-data)
+      * [Sentinel-2 (ESA)](#sentinel-2-esa)
+      * [Landsat-8 (NASA)]](#landsat-8-nasa)
+      * [Links](#links)
+      * [Papers](#papers)
+      * [Other](#other)
     * [Pre-labeled image data](#pre-labeled-image-data)
     * [Object and land-use labels](#object-and-land-use-labels)
-  * [Modeling](#modelling)
+  * [Modeling](#modeling)
     * [Modeling papers](#modeling-papers)
+      * [Satelite specific](#satelite-specific)
+      * [Modeling specific](#modeling-specific)
     * [Model implementations](#model-implementations)
     * [Image segmentation model implementations](#image-segmentation-model-implementations)
+      * [General](#general)
+      * [SegNet](#segnet)
+      * [U-Net](#u-net)
+      * [DeepLab](#deeplab)
+      * [Dialated convolutions](#dilated-convolutions)
+      * [PSPNet (Pyramid Scene Parsing Network)](#pspnet-pyramid-scene-parsing-network)
   * [Comeptitive data science](#comeptitive-data-science)
-  * [Tools/utilities](#Tools/utilities)
-  * [Visualisations/existing tools](#visualisations/existing-tools)
+  * [Tools and utilities](#Tools-and-utilities)
+  * [Visualisations and existing tools](#visualisations-and-existing-tools)
   * [Projects using Sentinel data](#projects-using-sentinel-data)
   * [Blogs](#blogs)
 
@@ -652,7 +665,7 @@ The following papers and resources provide a good overview of the field.
 * [U-Net: Convolutional Networks for Biomedical Image Segmentation](https://arxiv.org/pdf/1505.04597.pdf) - Used for 2nd place in DSTL challenge.
 
 
-### Model implementations (satelite)
+### Model implementations
 
 There exist a number of implementations of recent satelite image procesing 
 techniques. The following Github respositories are a good research starting
