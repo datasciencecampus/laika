@@ -309,7 +309,7 @@ Such that the sum of class pixels = total number of pixels in the image. In
 addition, the script will output *class heatmaps* and *class segments* 
 visualisations in to the `<output dir>`. 
 
-|[segmented](img/segmented.png)
+![segmented](img/segmented.png)
 
 The class heatmaps (1 image per class) show the model's confidence that a pixel
 belongs to a particular class (buildings and vegetation shown above). Given this
