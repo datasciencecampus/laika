@@ -13,19 +13,23 @@ from keras.callbacks import CSVLogger, EarlyStopping
 from model import model
 from data import load_data
 
-epochs = 2
+validation = 0.2
+epochs = 10 
+learning_rate = 0.001
+momentum = 0.9
 
 m = model()
 print("Loaded model.")
 print(m.summary())
+#dev
 #plot_model(model, to_file="/tmp/x.png")
 
-opt = SGD(lr=0.001, momentum=0.9, decay=0.0005, nesterov=False)
+opt = SGD(lr=learning_rate, momentum=momentum, decay=0.0005, nesterov=False)
 m.compile(loss="categorical_crossentropy", optimizer=opt, metrics=["accuracy"])
 print("Model compiled.")
 
 images, labels = load_data()
-images, labels = images[:100], labels[:100] # dev
+#images, labels = images[:100], labels[:100] # dev
 
 # shuffle dataset.
 total = len(images)
@@ -33,7 +37,7 @@ p = np.random.permutation(total)
 images, labels = images[p], labels[p]
 
 # 80/20 split.
-holdback = int(0.2*total)
+holdback = int(validation*total)
 images_val, labels_val = images[-holdback:], labels[-holdback:]
 images, labels = images[:-holdback], labels[:-holdback]
 

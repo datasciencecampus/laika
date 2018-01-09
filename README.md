@@ -1,15 +1,19 @@
-# Laika 
+# Skywalker 
 
 > Experiments with satellite image data.
 
 
 ## Synopsis
 
-The goal of *project laika* is to research potential sources of satellite image
-data and to implement various algorithms for satellite image classification, 
-object detection and segmentation. Laika is a precursor for a production ready,
-*end-to-end* satellite image processing framework and also is intended to serve
-as a protyping environment for testing recent and future developments.
+The goal of *project skywalker* is to research potential sources of satellite
+image data and to implement various algorithms for satellite image 
+classification, object detection and segmentation.
+
+Skywalker is a precursor for a production ready, *end-to-end* satellite image
+processing framework and also is intended to serve as a protyping environment
+for testing recent and future developments.
+
+**Note that this project is intended to form a starting point for future research**
 
 
 ## Goals
@@ -232,21 +236,93 @@ segment/class can be extrcacted by taking the the max of these values.
 
 ### Training
 
+First install `numpy`, `theano`, `keras` and `opencv2` Then:
 
+```
+python3 train.py
+```
+
+[train.py](train.py) will use the training data created with skynet in the 
+previous step. Note that by default, train.py expects to find this data in
+`../skynet-data/data`. Having loaded the raw training data and associated
+segment labels into a numpy array, the data are stored in
+[HDF5(]https://en.wikipedia.org/wiki/Hierarchical_Data_Format) format in
+`data/training.hdf5`. On subsequent runs, the [data.py](data loader) will first
+look for this HDF5 data as to reduce the startup time. Note that the 
+`data/training.hdf5` can be used by other models/frameworks/languages.
+
+In current form, all parameters are hard-coded. These are the default 
+parameters:
+
+| Parameter      | Default | Note                                              |
+| -------------- | ------- | ------------------------------------------------- |
+| validation     | 0.2     | % of dataset to use as training validation subset |
+| epochs         ! 10      | number of training epochs                         |
+| learning\_rate | 0.001   | learning rate                                     |
+| momentum       | 0.9     | momentum                                          |
+
+
+As-is, the model converges at a slow rate:
 
 ![img](img/error.png)
 
+Training and validation errors (loss and accuracy) are stored in
+`training_log.csv`. On completion, the network weights are dumped into 
+`weights.hdf5` - Note that this may be loaded into the same model implemented in
+another language/framework.
+
 ### Validating
 
-...
+Having trained the model, validate it using the testing data held back in the
+data-preparation stage:
 
-### Testing 
+```
+python3 validate.py
+```
 
-...
+[validate.py](validate.py) expects to find the trained model weights in 
+weights.hdf5 in the current working directory. In addition to printing out the
+validation results, the pixel-by-pixel class probabilities for each instance
+are stored in `predictions.hdf5` which can be inspected to debug the model.
+
+### Running 
+
+[feed\_forward.py](feed_forward.py) takes as input trained weights, an input 
+image and an output directory to produce pixel-by-pixel class predictions.
+
+```
+python3 feed_forward.py <hdf5 weights> <img location> <output dir>
+```
+
+Specifically, given an input satellite image, the script outputs the number of
+pixels belonging to one of the following classes:
+
+* background
+* residential
+* commercial
+* industrial
+* vegetation
+* building
+* brownfield
+
+Such that the sum of class pixels = total number of pixels in the image. In
+addition, the script will output *class heatmaps* and *class segments* 
+visualisations in to the `<output dir>`. 
+
+|[segmented](img/segmented.png)
+
+The class heatmaps (1 image per class) show the model's confidence that a pixel
+belongs to a particular class (buildings and vegetation shown above). Given this
+confidence, the maximum value from each class is used to determine the final 
+pixel segment, shown on the right in the above image. Some more visualisations
+can be found in [this notebook](notebooks/visualise_predictions.ipynb).
 
 ## Further work/notes 
 
-... 
+* The model as-is, is quite poor, trained to only 70% accuracy over the validation set).
+* The model has only been trained once: fine-tuning and hyperparameter search has not yet been completed.
+* The training data is very noisy: the segments are only partially labelled. As such, missing labels are assigned as "background".
+* General issues/bugs/improvements can be found on the [project board](skywalker/projects/1).
 
 # Background research
 
@@ -639,11 +715,6 @@ Tensorflow implementations:
 Bleeding edge. More details [here](https://hszhao.github.io/projects/pspnet/index.html)
 
 * [PSPNet-Keras-tensorflow](https://github.com/Vladkryvoruchko/PSPNet-Keras-tensorflow) 67 stars.
-
-
-
-
-![Segnet architecture](img/segnet.png)
 
 
 
