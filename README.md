@@ -209,7 +209,7 @@ coordinates are specified in the following form:
 ```
 
 Before following the next steps, go to [MapBox](https://www.mapbox.com/) and 
-sign up for a developer key.
+sign up for a developer key ("Access Token").
 
 
 Having obtained your developer key from MapBox, store it in an environment variable:
