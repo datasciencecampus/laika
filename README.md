@@ -78,16 +78,20 @@ dataset, and a SegNet encoder/decoder network for image segmentation.
 
 ## Creating a training dataset
 
-Install some os deps:
+Install some os deps: (*Note*: you may need to create `/usr/local/Frameworks` with user write access beforehand)
 ```
 brew install mapnik
-brew install paralell
+brew install parallel
 ```
 
-Clone and install the skynet-data project:
-
+The `skynet-data` project is a submodule of `skywalker`, so you don't need to explicitly download it, but do ensure you
+clone `skywalker` with `git clone --recursive https://github.com/datasciencecampus/skywalker.git`.
 ```
-git clone https://github.com/developmentseed/skynet-data
+```
+This will automatically download skynet-data from https://github.com/developmentseed/skynet-data
+
+Move to the skynet data folder with:
+```
 cd skynet-data
 ```
 
@@ -191,6 +195,7 @@ TRAIN_SIZE?=10000
 CLASSES?=classes/mine.json
 ZOOM_LEVEL?=17
 ```
+(UNCLEAR if LABEL_RATIO needs removing)
 
 This will instruct the proceeding steps to download 10,000 images from within a
 bounding box (defined as part of the South-west here). The images will be 
@@ -207,7 +212,7 @@ Before following the next steps, go to [MapBox](https://www.mapbox.com/) and
 sign up for a developer key.
 
 
-Having obtained your developer key from MapBox, store it in an env. variable:
+Having obtained your developer key from MapBox, store it in an environment variable:
 
 ```
 export MapboxAccessToken="my_secret_token"
@@ -805,4 +810,3 @@ Lots of interesting reading and projects.
 ## Other 
 
 * [Satellite imagery - what can hospital carparks tell us about disease outbreak?](http://online.qmags.com/CMG0414/Default.aspx?pg=97&mode=2&imm_mid=0bb43a&cmp=em-strata-na-na-newsltr_20140423_elist#pg97&mode2)
-
