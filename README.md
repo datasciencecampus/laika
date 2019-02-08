@@ -195,7 +195,7 @@ TRAIN_SIZE?=10000
 CLASSES?=classes/mine.json
 ZOOM_LEVEL?=17
 ```
-(UNCLEAR if LABEL_RATIO needs removing)
+**(UNCLEAR if LABEL_RATIO needs removing)**
 
 This will instruct the proceeding steps to download 10,000 images from within a
 bounding box (defined as part of the South-west here). The images will be 
@@ -229,6 +229,8 @@ make data/sample.txt
 make data/labels/color
 make data/images
 ```
+
+**(tippecanoe-enumerate fails in script with data/all_tiles.txt)**
 
 You will end up with 10,000 images in `data/images` and 10,000 "ground truth"
 images in `data/labels`. `data/sample-filtered.txt` contains a list of files of
