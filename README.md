@@ -14,7 +14,6 @@ image data and to implement various algorithms for satellite image
 
 ## Table of contents
 
-* [Goals](#goals)
 * [Running the code](#running-the-code)
   * [Creating a training dataset](#creating-a-training-dataset)
   * [The model](#the-model)
