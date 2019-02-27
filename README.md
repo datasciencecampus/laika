@@ -1,19 +1,14 @@
-# Skywalker 
+# Laika 
 
-> Experiments with satellite image data.
+> Notes and experiments with satellite image data.
 
 
 ## Synopsis
 
-The goal of *project skywalker* is to research potential sources of satellite
+The goal of this repo is to research potential sources of satellite
 image data and to implement various algorithms for satellite image 
-classification, object detection and segmentation.
+**segmentation**.
 
-Skywalker is a precursor for a production ready, *end-to-end* satellite image
-processing framework and also is intended to serve as a protyping environment
-for testing recent and future developments.
-
-**Note that this project is intended to form a starting point for future research**
 
 ## Table of contents
 
@@ -56,17 +51,6 @@ for testing recent and future developments.
   * [Visualisations and existing tools](#visualisationsexisting-tools)
   * [Projects using Sentinel data](#projects-using-sentinel-data)
   * [Blogs](#blogs)
-
-## Goals
-
-1. Review potential sources of satellite imagery
-2. Implement an existing satellite segmentation algorithm
-3. Document and communicate the algorithm
-4. Define the high level pipeline
-5. Develop and test a model for collaborative project work
-
-Please consult the [success criteria](success_criteria.md) for a detailed 
-breakdown of this project's goals.
 
 
 # Running the code
@@ -354,7 +338,7 @@ can be found in [this notebook](notebooks/visualise_predictions.ipynb).
 * The model as-is, is quite poor, trained to only 70% accuracy over the validation set).
 * The model has only been trained once: fine-tuning and hyperparameter search has not yet been completed.
 * The training data is very noisy: the segments are only partially labelled. As such, missing labels are assigned as "background".
-* General issues/bugs/improvements can be found on the [project board](skywalker/projects/1).
+
 
 # Background research
 
